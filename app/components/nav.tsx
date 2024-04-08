@@ -8,8 +8,8 @@ export default function NavBar (){
   </div>
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal px-6">
-    <li><Link href={""}>Home</Link></li>
-      <li><Link href={""}>Acounts</Link></li>
+    <li><Link href={"/"}>Home</Link></li>
+      <li><Link href={"/accounts"}>Acounts</Link></li>
       <li><Link href={""}>Transactions</Link></li>
       <li><Link href={""}>Dashboard</Link></li>
     </ul>
