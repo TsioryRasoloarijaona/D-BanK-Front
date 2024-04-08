@@ -16,7 +16,7 @@ const VerticalTab : React.FC<tabPops> = ({tabs}) => {
     <div className='flex flex-row border rounded-lg justify-between mx-auto w-[95vw]  mt-4 h-[85vh] overflow-auto shadow-xl bg-white'>
         <div className='w-1/5  flex flex-col items-center border-r'>
             {tabs.map((tab , index)=>(
-                <div className='py-3 border-b w-2/3 text-center px-3 cursor-pointer mb-3 ' key={index} onClick={()=> setActiveTab(index)}>
+                <div className='py-3 pb-4 border-b w-2/3 text-center px-3 cursor-pointer mb-3 ' key={index} onClick={()=> setActiveTab(index)}>
                     {tab.label}
                 
                 </div>

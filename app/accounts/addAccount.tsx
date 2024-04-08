@@ -56,7 +56,7 @@ export default function AddAccount() {
             {message?.error ? (
                 <Modal isOpen={isModalOpen} onClose={closeModal} children={message.error} color='text-red-500' tittle='Failed' />
             ) : (
-                <Modal isOpen={isModalOpen} onClose={closeModal} children={message?.success} color='text-green-500' tittle='Success' />
+                <Modal isOpen={isModalOpen} onClose={closeModal} children={message?.success} color='' tittle='Success' />
             )}
 
 
