@@ -9,14 +9,13 @@ import React from "react";
 const ListAccounts = () => {
     const [account, setAccount] = useState<Account[]>([]);
     useEffect(() => {
-        setInterval(()=> {
             fetch("http://localhost:8080/accounts")
             .then(res => res.json())
             .then((data : Account[])=>{
                  setAccount(data)
             })
-        }, 1000)
-    }, [])
+        
+    }, [account])
 
 
             

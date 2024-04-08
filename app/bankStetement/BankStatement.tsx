@@ -54,7 +54,7 @@ export default function BankStatement({ id }: { id: string }) {
         <>
             <div className='flex flex-row gap-4 items-center'>
                 <label htmlFor="monthSelect">select a month:</label>
-                <select className='ml-3 px-2 font-sans  py-2 rounded-md bg-transparent' id="monthSelect" onChange={handleMonthChange}>
+                <select className='ml-3 px-2 font-sans py-2 rounded-md bg-slate-200' id="monthSelect" onChange={handleMonthChange}>
                     <option className='' value=''>month</option>
                     {months.map((month, index) => (
                         <option key={index} value={index + 1} className='font-sans border-none'>{month}</option>
@@ -66,7 +66,7 @@ export default function BankStatement({ id }: { id: string }) {
                 <table className="table">
 
                     <thead>
-                        <tr>
+                        <tr className='text-base'>
                             <th>date</th>
                             <th>transaction ref</th>
                             <th>operation</th>
