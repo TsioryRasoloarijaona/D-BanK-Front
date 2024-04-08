@@ -5,10 +5,12 @@ import { FaExchangeAlt } from "react-icons/fa";
 import { FaArrowsRotate } from "react-icons/fa6";
 import { RiHandCoinFill } from "react-icons/ri";
 import { PiBankFill } from "react-icons/pi";
-import Info from '@/app/info/info';
-import BankStatement from '@/app/bankStetement/BankStatement';
-
+import { CiInboxOut } from "react-icons/ci";
+import { FaDownLeftAndUpRightToCenter } from "react-icons/fa6";
 import { BiSolidDollarCircle } from "react-icons/bi";
+import BankStatement from '@/app/bankStetement/BankStatement';
+import Info from '@/app/info/info';
+import Loan from '@/app/loan/loan';
 
 export default function page({params}: {params : {id : String}}) {
   const tab = [
@@ -16,11 +18,13 @@ export default function page({params}: {params : {id : String}}) {
     {label : <p><BiSolidDollarCircle className='text-2xl mx-auto' />Balance</p> , content : <p>my name is detail</p>},
     {label : <p><FaExchangeAlt className='text-2xl mx-auto' />Transfer</p> , content : <p>my name is detail</p>},
     {label : <p><FaArrowsRotate className='text-2xl mx-auto' />Transaction</p> , content : <p>my name is detail</p>},
-    {label : <p><RiHandCoinFill className='text-2xl mx-auto' />Loan money</p> , content : <p>my name is detail</p>},
-    {label : <p><PiBankFill className='text-2xl mx-auto' />Bank Statement</p> , content : <BankStatement id= {`${params.id}`}/>}
+    {label : <p><RiHandCoinFill className='text-2xl mx-auto' />Loan money</p> , content : <Loan id={`${params.id}`}/>},
+    {label : <p><PiBankFill className='text-2xl mx-auto' />Bank Statement</p> , content : <BankStatement id= {`${params.id}`}/>},
+    {label : <p><FaDownLeftAndUpRightToCenter className='text-2xl mx-auto' />provisioning</p> , content : <p>provisioning</p>},
+    {label : <p><CiInboxOut className='text-2xl mx-auto' />withdrawal</p> , content : <p>provisioning</p>}
 ]
 return (
-<div>
+<div className='mt-0'>
   <VerticalTab tabs={tab}/>
 </div>
 )
