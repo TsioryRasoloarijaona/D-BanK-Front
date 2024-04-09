@@ -11,6 +11,8 @@ import { BiSolidDollarCircle } from "react-icons/bi";
 import BankStatement from '@/app/bankStetement/BankStatement';
 import Info from '@/app/info/info';
 import Loan from '@/app/loan/loan';
+import Provisioning from '@/app/provisioning/provisioning';
+
 
 export default function page({params}: {params : {id : String}}) {
   const tab = [
@@ -20,7 +22,7 @@ export default function page({params}: {params : {id : String}}) {
     {label : <p><FaArrowsRotate className='text-2xl mx-auto' />Transaction</p> , content : <p>my name is detail</p>},
     {label : <p><RiHandCoinFill className='text-2xl mx-auto' />Loan money</p> , content : <Loan id={`${params.id}`}/>},
     {label : <p><PiBankFill className='text-2xl mx-auto' />Bank Statement</p> , content : <BankStatement id= {`${params.id}`}/>},
-    {label : <p><FaDownLeftAndUpRightToCenter className='text-2xl mx-auto' />provisioning</p> , content : <p>provisioning</p>},
+    {label : <p><FaDownLeftAndUpRightToCenter className='text-2xl mx-auto' />provisioning</p> , content : <Provisioning id= {`${params.id}`}/>},
     {label : <p><CiInboxOut className='text-2xl mx-auto' />withdrawal</p> , content : <p>provisioning</p>}
 ]
 return (
