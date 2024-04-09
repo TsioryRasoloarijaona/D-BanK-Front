@@ -12,6 +12,15 @@ export default function Info({ id }: { id: string }) {
     const [isAllowed , setIsAllowed] = useState(false)
     const [message , setMessage] = useState<Message>()
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isModalLoanOpen, setIsModalLoanOpen] = useState(false)
+
+  const openModalLoan = () => {
+      setIsModalOpen(true)
+  }
+
+  const closeModalLoan = () => {
+      setIsModalOpen(false)
+  }
 
     const openModal = () => {
         setIsModalOpen(true)
