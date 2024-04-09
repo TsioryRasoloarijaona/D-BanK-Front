@@ -25,7 +25,7 @@ const ListAccounts = () => {
             
             <div className="flex flex-row justify-between mt-6 px-10 h-[80vh] overflow-y-auto" >
                 <AddAccount/>
-                <div className="w-3/4 overflow-y-auto">
+                <div className="w-3/4 overflow-y-auto text-sm">
                 {account.map((element, index) => (
                 <div className="flex flex-row justify-between p-6 border-collapse rounded-lg shadow bg-white w-full mb-2" key={index}>
                     <div>
