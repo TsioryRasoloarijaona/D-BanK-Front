@@ -13,7 +13,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, color, tittle 
     if (!isOpen) return null;
     return (
         <div className="relative">
-            <div className="fixed inset-0 z-0" style={{ backdropFilter: 'blur(5px)' }}>
+            <div className="fixed inset-0 z-50" style={{ backdropFilter: 'blur(5px)' }}>
                 <div className="modal-box absolute top-1/2 left-1/2 opacity-100  transform -translate-x-1/2 -translate-y-1/2 z-50">
                     <h3 className="font-bold text-lg">{tittle}</h3>
                     <p className={`py-4 ${color}`} >{children}</p>

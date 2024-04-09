@@ -1,7 +1,8 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { bankStatementInterface } from '../interface/bankStatementInterface'
-import { FaCloudDownloadAlt } from "react-icons/fa";
+import { IoMdDownload } from "react-icons/io";
+
 
 export default function BankStatement({ id }: { id: string }) {
     const date: Date = new Date()
@@ -11,8 +12,8 @@ export default function BankStatement({ id }: { id: string }) {
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
-      ];
-      
+    ];
+
 
     const handleMonthChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const monthNumber = parseInt(event.target.value, 10);
@@ -32,7 +33,7 @@ export default function BankStatement({ id }: { id: string }) {
 
     const download = async () => {
         try {
-           
+
             const response = await fetch(`http://localhost:8080/bankStatement/download/${id}/${month}`);
             if (!response.ok) {
                 throw new Error('download failed');
@@ -49,7 +50,7 @@ export default function BankStatement({ id }: { id: string }) {
             console.error('Erreur lors du téléchargement du fichier:', error);
         }
     };
-    
+
     return (
         <>
             <div className='flex flex-row gap-4 items-center'>
@@ -60,7 +61,10 @@ export default function BankStatement({ id }: { id: string }) {
                         <option key={index} value={index + 1} className='font-sans border-none'>{month}</option>
                     ))}
                 </select>
-                <div onClick={download}><FaCloudDownloadAlt className='text-xl cursor-pointer'/></div>
+                <div onClick={download}>
+                    <IoMdDownload data-tip={'download this bank statement'} className='text-xl cursor-pointer' />
+                    
+                </div>
             </div>
             <div className="overflow-x-auto mt-11 h-5/6">
                 <table className="table">
@@ -88,9 +92,9 @@ export default function BankStatement({ id }: { id: string }) {
                                 </tr>
                             ))
                         ) : (
-                            
-                                 <div  className='absolute top-1/2 left-1/2 transform -translate-x-1/2 mt-36'>no transaction registered this month</div>
-                            
+
+                            <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 mt-36'>no transaction registered this month</div>
+
                         )}
 
                     </tbody>
