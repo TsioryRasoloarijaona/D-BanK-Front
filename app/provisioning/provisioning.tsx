@@ -14,8 +14,6 @@ export default function Provisioning({ id }: { id: string }) {
   const [message, setMessage] = useState<Message>()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-
-
   const openModal = () => {
     setIsModalOpen(true)
   }

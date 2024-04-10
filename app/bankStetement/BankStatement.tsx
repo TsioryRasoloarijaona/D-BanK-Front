@@ -79,7 +79,7 @@ export default function BankStatement({ id }: { id: string }) {
                             <th>pattern</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='h-full overflow-y-auto'>
                         {BanK.length > 0 ? (
                             BanK.map((el, index) => (
                                 <tr key={index}>
