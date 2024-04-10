@@ -53,6 +53,7 @@ export default function foreignTrasfer({ id }: { id: string }) {
             })
 
         openModal()
+        setForeignReceivers([]);
         reset()
     }
 
@@ -64,10 +65,10 @@ export default function foreignTrasfer({ id }: { id: string }) {
             ) : (
                 <Modal isOpen={isModalOpen} onClose={closeModal} children={message?.success} color='' tittle='Success' />
             )}
-            <div className='flex flex-row justify-between text-red-500 mt-3 text-sm w-1/2'>
-                {errors.amount && <p> {errors.amount.message} /</p>}
-                {errors.receiverAccount && <p> {errors.receiverAccount.message} /</p>}
-                {errors.reason && <p> {errors.reason.message} /</p>}
+            <div className='flex flex-row justify-evenly text-red-500 mt-3 text-sm w-1/2 h-5'>
+                {errors.amount && <p> {errors.amount.message} !</p>}
+                {errors.receiverAccount && <p> {errors.receiverAccount.message} !</p>}
+                {errors.reason && <p> {errors.reason.message} !</p>}
             </div>
             <form action="" className='mt-3 text-sm  w-1/2  ' onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-row justify-between'>

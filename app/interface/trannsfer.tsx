@@ -29,3 +29,16 @@ export interface foreignTransfer {
     transfer : transferSender;
     foreignReceivers : foreignReceiver []
 }
+
+export interface transferHistory {
+    transactionId: string;
+    transferId: string;
+    amount: number;
+    label: string;
+    effectiveDate: string;
+    transferRef: string;
+    accountReceiverRef: string;
+    receiverName: string;
+    foreignAccount: string;
+    status: string;
+}

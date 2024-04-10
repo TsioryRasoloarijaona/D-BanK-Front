@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import React from 'react'
 import ForeignTrasfer from './foreignTrasfer'
 import LocalTransfer from './localTransfer'
+import TransferHistory from './transferHistory'
 
 export default function Transfer({ id }: { id: string }) {
 
@@ -25,7 +26,7 @@ export default function Transfer({ id }: { id: string }) {
     return (
         <>
 
-            <div>
+            <div className='mb-4'>
                 <div className='flex flex-row gap-6 text-sm'>
                     <button onClick={makeChoiceTrue} className={`py-2 px-4 rounded-3xl border border-red-500 ${choice ? 'bg-red-500 text-white' : ''}`}>local transfer</button>
                     <button onClick={makeChoiceFalse} className={`py-2 px-4 rounded-3xl border border-red-500 ${!choice ? 'bg-red-500 text-white' : ''}`}>foreign transfer</button>
@@ -34,6 +35,8 @@ export default function Transfer({ id }: { id: string }) {
                 {choice ? (<LocalTransfer id={id} />) : <ForeignTrasfer id={id} />}
 
             </div>
+
+            <TransferHistory choice={choice} id= {id}/>
 
         </>
     )
