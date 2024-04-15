@@ -13,12 +13,14 @@ import Info from '@/app/info/info';
 import Loan from '@/app/loan/loan';
 import Provisioning from '@/app/provisioning/provisioning';
 import Transfer from '@/app/transfer/transfer';
+import Balance from '@/app/balance/Balance';
+import { id } from 'date-fns/locale';
 
 
 export default function page({params}: {params : {id : String}}) {
   const tab = [
     {label : <p><FaCircleInfo className='text-2xl mx-auto mt-3' />Info</p> , content : <Info id= {`${params.id}`}/>},
-    {label : <p><BiSolidDollarCircle className='text-2xl mx-auto' />Balance</p> , content : <p>my name is detail</p>},
+    {label : <p><BiSolidDollarCircle className='text-2xl mx-auto' />Balance</p> , content : <Balance id={`${params.id}`}/>},
     {label : <p><FaExchangeAlt className='text-2xl mx-auto' />Transfer</p> , content : <Transfer id= {`${params.id}`}/>},
     {label : <p><FaArrowsRotate className='text-2xl mx-auto' />Transaction</p> , content : <p>my name is detail</p>},
     {label : <p><RiHandCoinFill className='text-2xl mx-auto' />Loan money</p> , content : <Loan id={`${params.id}`}/>},

@@ -70,18 +70,20 @@ export default function Loan({ id }: { id: string }) {
 
     }
 
-    useEffect(() => {
-        setValue("accountId", id)
-    }, [id, setValue])
+   
 
     const onSubmit = (data: loanPost) => {
-        console.log(data)
+        const laonSend : loanPost = {
+            ...data ,
+            accountId : id
+        }
+        console.log(laonSend)
         fetch("http://localhost:8080/loan",{
             method : 'POST',
             headers : {
                 'Content-Type':'application/json'
             },
-            body : JSON.stringify(data)
+            body : JSON.stringify(laonSend)
         })
         .then(res=>res.json())
         .then((data : Message)=>{
