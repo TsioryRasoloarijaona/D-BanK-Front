@@ -1,8 +1,22 @@
-import React from 'react'
-import BalanceHistory from './balanceHistory'
+import BalanceHistory from './balanceHistory';
+import Provisioning from '../provisioning/provisioning';
 
-export default function Balance({id} : {id : string}) {
+export default function Balance({ id }: { id: string }) {
+
+
+
   return (
-    <BalanceHistory id={id}/>
+    <>
+
+      <div className='mb-10'>
+        <BalanceHistory id={id} />
+      </div>
+      <div className=''>
+
+        <Provisioning id={id} />
+
+      </div>
+
+    </>
   )
 }

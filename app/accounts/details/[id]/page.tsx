@@ -6,7 +6,6 @@ import { FaArrowsRotate } from "react-icons/fa6";
 import { RiHandCoinFill } from "react-icons/ri";
 import { PiBankFill } from "react-icons/pi";
 import { CiInboxOut } from "react-icons/ci";
-import { FaDownLeftAndUpRightToCenter } from "react-icons/fa6";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import BankStatement from '@/app/bankStetement/BankStatement';
 import Info from '@/app/info/info';
@@ -25,7 +24,6 @@ export default function page({params}: {params : {id : String}}) {
     {label : <p><FaArrowsRotate className='text-2xl mx-auto' />Transaction</p> , content : <p>my name is detail</p>},
     {label : <p><RiHandCoinFill className='text-2xl mx-auto' />Loan money</p> , content : <Loan id={`${params.id}`}/>},
     {label : <p><PiBankFill className='text-2xl mx-auto' />Bank Statement</p> , content : <BankStatement id= {`${params.id}`}/>},
-    {label : <p><FaDownLeftAndUpRightToCenter className='text-2xl mx-auto' />provisioning</p> , content : <Provisioning id= {`${params.id}`}/>},
     {label : <p><CiInboxOut className='text-2xl mx-auto' />withdrawal</p> , content : <p>provisioning</p>}
 ]
 return (

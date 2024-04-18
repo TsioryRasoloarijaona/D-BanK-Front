@@ -99,28 +99,28 @@ export default function Loan({ id }: { id: string }) {
         <div>
             <div className='mb-5'>
                 <div className='text-red-500 text-sm flex flex-row gap-6 mb-3'>
-                    {errors.interestAboveSevenDay &&<p>/ {errors.interestAboveSevenDay.message} /</p>}
-                    {errors.amount && <p>/ {errors.amount.message} /</p>}
-                    {errors.interestSevenDay && <p>/ {errors.interestSevenDay.message} /</p>}
+                    {errors.interestAboveSevenDay &&<p>{errors.interestAboveSevenDay.message}!</p>}
+                    {errors.amount && <p>{errors.amount.message}!</p>}
+                    {errors.interestSevenDay && <p>{errors.interestSevenDay.message}!</p>}
 
                 </div>
                 <form action="" className='flex flex-row gap-6 items-center' onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="">
-                        <input type="number" className='focus:outline-none px-2 py-2 bg-slate-400 text-white text-sm rounded-md placeholder:text-sm placeholder:text-white ' placeholder='amount$'
+                        <input type="number" className='focus:outline-none px-2 py-2 border border-slate-400 text-black text-sm rounded-md placeholder:text-sm placeholder:text-black ' placeholder='amount$'
                             {...register("amount", {
                                 required: "add an amount",
                                 min: { value: 10, message: "amount>10" }
                             })} />
                     </label>
                     <label htmlFor="">
-                        <input type="number" className='focus:outline-none px-2 py-2 bg-slate-400 text-white text-sm rounded-md placeholder:text-sm placeholder:text-white' placeholder='interest -7d%'
+                        <input type="number" className='focus:outline-none px-2 py-2 border border-slate-400 text-black text-sm rounded-md placeholder:text-sm placeholder:text-black' placeholder='interest -7d%'
                             {...register("interestSevenDay", {
                                 required: "interest -7d empty",
                                 min: { value: 0, message: "interest -7d>0" }
                             })} />
                     </label>
                     <label htmlFor="">
-                        <input type="number" className=' focus:outline-none px-2 py-2 bg-slate-400 text-white text-sm rounded-md placeholder:text-sm placeholder:text-white' placeholder='interest +7d%'
+                        <input type="number" className=' focus:outline-none px-2 py-2 border border-slate-400 text-black text-sm rounded-md placeholder:text-sm placeholder:text-black' placeholder='interest +7d%'
                             {...register("interestAboveSevenDay", {
                                 required: "interest +7d empty",
                                 min: { value: 0, message: "interest +7d>0" }

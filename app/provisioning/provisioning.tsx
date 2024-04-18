@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import Message from '../interface/message'
 import Modal from '../components/modal'
-import { Resolver } from 'dns/promises'
+
 
 
 export default function Provisioning({ id }: { id: string }) {
@@ -13,6 +13,16 @@ export default function Provisioning({ id }: { id: string }) {
   const [categoryId, setCategoryId] = useState<Number>();
   const [message, setMessage] = useState<Message>()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [url, setUrl] = useState('provising/save');
+  const [type, setType] = useState('credit')
+  const [choice, setChoice] = useState(true);
+
+  const makeTrue = () => {
+    setChoice(true)
+  }
+  const makeFalse = () => {
+    setChoice(false)
+  }
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -32,14 +42,23 @@ export default function Provisioning({ id }: { id: string }) {
   } = useForm<ProvisioningPost>();
 
   useEffect(() => {
-    fetch("http://localhost:8080/category/credit")
+    !choice ? (
+      setType('debit'),
+      setUrl('expense')
+    ) : (
+      setType('credit'),
+      setUrl('provising/save')
+    )
+  }, [choice])
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/category/${type}`)
       .then(res => res.json())
       .then((data: Category[]) => {
         setCategory(data)
       })
 
   }, [category])
-
 
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -49,12 +68,12 @@ export default function Provisioning({ id }: { id: string }) {
   };
 
   const onSubmit = (data: ProvisioningPost) => {
-    const post : ProvisioningPost = {
+    const post: ProvisioningPost = {
       ...data,
-      accountId : id
+      accountId: id
     }
     console.log(data)
-    fetch(`http://localhost:8080/provising/save/${categoryId}`, {
+    fetch(`http://localhost:8080/${url}/${categoryId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -65,8 +84,8 @@ export default function Provisioning({ id }: { id: string }) {
       .then((data: Message) => {
         setMessage(data)
       })
-      openModal()
-      reset()
+    openModal()
+    reset()
   }
 
 
@@ -77,40 +96,56 @@ export default function Provisioning({ id }: { id: string }) {
       ) : (
         <Modal isOpen={isModalOpen} onClose={closeModal} children={message?.success} color='' tittle='Success' />
       )}
-      <div className='text-red-500 text-sm flex flex-row gap-6 mb-3'>
-        {errors.amount && <p>/ {errors.amount.message} /</p>}
-        {errors.reason && <p>/ {errors.reason.message} /</p>}
-        {errors.effectiveDate && <p>/ {errors.effectiveDate.message} /</p>}
+      
+
+
+      <div className='w-full shadow-xl rounded-xl flex flex-row items-center justify-between h-fit py-3 px-4'>
+        <div className='flex flex-col gap-6 text-sm mx-auto'>
+          <button onClick={makeTrue} className={`py-2 px-4 rounded-3xl border border-red-500 ${choice ? 'bg-red-500 text-white' : ''}`}>provise</button>
+          <button onClick={makeFalse} className={`py-2 px-4 rounded-3xl border border-red-500 ${!choice ? 'bg-red-500 text-white' : ''}`}>withdrawal</button>
+        </div>
+        <form action="" className=' w-3/4 flex flex-row items-center justify-evenly' onSubmit={handleSubmit(onSubmit)}>
+          <div className='text-center space-y-5'>
+            <label htmlFor="" className='block'>
+              {errors.amount && <p className='text-red-500 text-sm'>{errors.amount.message}!</p>}
+              <input type="number" className='focus:outline-none px-2 py-2 bg-white text-sm border-b border-black rounded-md placeholder:text-sm placeholder:text-black' placeholder='amount$'
+                {...register("amount", {
+                  required: "add an amount",
+                  min: { value: 0, message: "amount > 0" }
+                })} />
+            </label>
+            <label htmlFor="" className='block'>
+              {errors.reason && <p className='text-red-500 text-sm'> {errors.reason.message}!</p>}
+              <input type="text" className='focus:outline-none px-2 py-2 bg-white border-b border-black text-sm rounded-md placeholder:text-sm placeholder:text-black' placeholder='reason'
+                {...register("reason", {
+                  required: "reason is required"
+                })} />
+            </label>
+          </div>
+          <div className='text-center space-y-5'>
+          {choice? (
+          <label htmlFor="" className='block'>
+            {errors.effectiveDate && <p className='text-red-500 text-sm'>{errors.effectiveDate.message} !</p>}
+            <input type="date" className=' focus:outline-none px-2 py-2 bg-white border-b border-black  text-sm rounded-md placeholder:text-sm placeholder:text-white w-full' placeholder='effective date'
+              {...register("effectiveDate", {
+                required: "specify a date"
+              })} />
+          </label>
+
+          ):null}
+            <select className=' px-2 font-sans py-2 rounded-md  bg-white text-black  border-b border-black w-full block' id="monthSelect" onChange={handleChange}>
+              <option className='' value=''>category</option>
+              {category.map((cat) => (
+                <option key={cat.subCategoryId} value={cat.subCategoryId} className='font-sans border-none text-sm'>{cat.subCategory}</option>
+              ))}
+            </select>
+          </div>
+          {choice ? (<button type='submit' className='px-6 py-2 bg-red-500 rounded-md text-white text-sm'>Provise</button>) :
+            (<button type='submit' className='px-6 py-2 bg-red-500 rounded-md text-white text-sm'>withdrawal</button>)}
+        </form>
 
       </div>
-      <form action="" className='flex flex-row gap-6 items-center' onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="">
-          <input type="number" className='focus:outline-none px-2 py-2 bg-slate-400 text-white text-sm rounded-md placeholder:text-sm placeholder:text-white ' placeholder='amount$'
-            {...register("amount", {
-              required: "add an amount",
-              min: { value: 0, message: "amount > 0" }
-            })} />
-        </label>
-        <label htmlFor="">
-          <input type="text" className='focus:outline-none px-2 py-2 bg-slate-400 text-white text-sm rounded-md placeholder:text-sm placeholder:text-white' placeholder='reason'
-            {...register("reason", {
-              required: "reason is required"
-            })} />
-        </label>
-        <label htmlFor="">
-          <input type="date" className=' focus:outline-none px-2 py-2 bg-slate-400 text-white text-sm rounded-md placeholder:text-sm placeholder:text-white' placeholder='effective date'
-            {...register("effectiveDate", {
-              required: "specify a date"
-            })} />
-        </label>
-        <select className='ml-3 px-2 font-sans py-2 rounded-md  bg-slate-400 text-white' id="monthSelect" onChange={handleChange}>
-          <option className='' value=''>category</option>
-          {category.map((cat) => (
-            <option key={cat.subCategoryId} value={cat.subCategoryId} className='font-sans border-none'>{cat.subCategory}</option>
-          ))}
-        </select>
-        <button type='submit' className='px-6 py-2 bg-red-500 rounded-md text-white text-sm'>provise</button>
-      </form>
+
     </>
   )
 }

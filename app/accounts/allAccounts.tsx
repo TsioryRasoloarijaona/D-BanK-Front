@@ -27,7 +27,7 @@ const AllAccounts = () => {
 
     return (
         <>
-
+            
             {account.map((element, index) => (
                 <div className="flex flex-row justify-between p-6 border-collapse rounded-lg shadow bg-white w-full mb-2" key={index}>
                     <div>
