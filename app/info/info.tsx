@@ -63,7 +63,7 @@ export default function Info({ id }: { id: string }) {
             )}
             <div className='mb-5 mt-5'> reference : <p className='text-xl font-bold'>{account?.accountRef}</p></div>
             <div className='mb-5'>
-                <p>first name :</p>
+                <p className='text-sm'>first name :</p>
                 <p className='text-xl font-bold'>{account?.firstName}</p>
             </div>
             <div className='mb-5'>
@@ -71,11 +71,11 @@ export default function Info({ id }: { id: string }) {
                 <p className='text-xl font-bold'>{account?.lastName}</p>
             </div>
             <div className='mb-5'>
-                <p>birth data :</p>
+                <p className='text-sm'>birth data :</p>
                 <p className='text-xl font-bold'>{account?.birthdate}</p>
             </div>
             <div className='mb-5'>
-                <p>monthlyPay :</p>
+                <p className='text-sm'>monthlyPay :</p>
                 <p className='text-xl font-bold'>{account?.monthlyPay} $</p>
             </div>
             <div className='mb-5'>

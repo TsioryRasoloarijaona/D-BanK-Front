@@ -6,7 +6,7 @@ import { IoMdDownload } from "react-icons/io";
 
 export default function BankStatement({ id }: { id: string }) {
     const date: Date = new Date()
-    const actualMonth: number = date.getMonth() - 1;
+    const actualMonth: number = date.getMonth() + 1;
     const [BanK, setBank] = useState<bankStatementInterface[]>([])
     const [month, setMonth] = useState<Number>(actualMonth)
     const months = [
@@ -54,9 +54,9 @@ export default function BankStatement({ id }: { id: string }) {
     return (
         <>
             <div className='flex flex-row gap-4 items-center'>
-                <label htmlFor="monthSelect">select a month:</label>
-                <select className='ml-3 px-2 font-sans py-2 rounded-md bg-slate-200' id="monthSelect" onChange={handleMonthChange}>
-                    <option className='' value=''>month</option>
+                <label htmlFor="monthSelect" className='text-sm'>select a month :</label>
+                <select className='ml-3 px-2 font-sans py-2 rounded-md bg-slate-400 text-white text-sm' id="monthSelect" onChange={handleMonthChange}>
+                    <option className='' value=''>{months[actualMonth-1]}</option>
                     {months.map((month, index) => (
                         <option key={index} value={index + 1} className='font-sans border-none'>{month}</option>
                     ))}
@@ -79,7 +79,7 @@ export default function BankStatement({ id }: { id: string }) {
                             <th>pattern</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='h-full overflow-y-auto'>
                         {BanK.length > 0 ? (
                             BanK.map((el, index) => (
                                 <tr key={index}>
