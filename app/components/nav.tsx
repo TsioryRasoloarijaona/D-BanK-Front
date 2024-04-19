@@ -11,7 +11,7 @@ export default function NavBar (){
     <li><Link href={"/"}>Home</Link></li>
       <li><Link href={"/accounts"}>Accounts</Link></li>
       <li><Link href={""}>Transactions</Link></li>
-      <li><Link href={""}>Dashboard</Link></li>
+      <li><Link href={"/dashboard"}>Dashboard</Link></li>
     </ul>
   </div>
   

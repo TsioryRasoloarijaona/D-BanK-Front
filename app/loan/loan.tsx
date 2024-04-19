@@ -109,7 +109,7 @@ export default function Loan({ id }: { id: string }) {
                         <input type="number" className='focus:outline-none px-2 py-2 border border-slate-400 text-black text-sm rounded-md placeholder:text-sm placeholder:text-black ' placeholder='amount$'
                             {...register("amount", {
                                 required: "add an amount",
-                                min: { value: 10, message: "amount>10" }
+                                min: { value: 10, message: "amount>10$" }
                             })} />
                     </label>
                     <label htmlFor="">
