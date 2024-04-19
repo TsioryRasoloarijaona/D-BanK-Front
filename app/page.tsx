@@ -7,7 +7,7 @@ import { SiSpeedypage } from "react-icons/si";
 export default function Home() {
   return (
     <main>
-     <div className="h-screen w-screen flex flex-row overflow-hidden">
+     <div className="h-[90vh] w-screen flex flex-row overflow-hidden">
         <div className="h-full w-screen">
           <h1 className="pl-28 pt-60 text-4xl font-bold">Digital-BanK</h1>
           <button className="btn btn-error bg-red-500 bg-opacity-85 text-white ml-28 mt-20 px-20 py-4 hover:bg-red-600">get started <FaArrowRight /></button>

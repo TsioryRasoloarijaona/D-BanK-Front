@@ -138,7 +138,7 @@ export default function localTransfer({ id }: { id: string }) {
                         </label>
                     </div>
                     <div>
-                        <label htmlFor="" className='flex flex-col'>
+                        <label htmlFor="" className='flex flex-col mb-2'>
                             <p className='mb-1 font-bold'>Last name</p>
                             <input type="text" value={lastName} className='border border-black rounded-lg px-1 py-2 outline-none'
                             />
