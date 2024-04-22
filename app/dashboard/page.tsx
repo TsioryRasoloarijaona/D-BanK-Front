@@ -8,8 +8,8 @@ import '@/app/dashboard/dashboard.css'
 
 const DashBoardPage: React.FC = () => {
   return (
-    <main>
-      <div className={`bg-slate-100 chartContainer pt-8 flex flex-col w-full`}>
+    <main className="dashboard-bg">
+      <div className={`chartContainer pt-8 flex flex-col w-full`}>
         <div className={`flex flex-row justify-evenly`}>
           <TransactionChart categoryName={""} sum={0} />
           <ExpenseChart />
