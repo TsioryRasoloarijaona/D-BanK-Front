@@ -126,7 +126,7 @@ const ProvisioningChart: React.FC = () => {
 
     return (
         <div className={`barContainer  bg provisioningBar`}>
-            <div className={`bg-white mt-2 h-12 pt-2 pl-60`}><h2 className={`text-xl text-red-600 text-center border-solid border-black border-b-2 mx-32`}> Expense sum by category</h2></div>
+            <div className={`bg-white mt-2 h-12 pt-2 pl-60`}><h2 className={`text-xl text-red-600 text-center border-solid border-black border-b-2 mx-32`}> Provisioning sum by category</h2></div>
             <div className={`flex flex-row bg-white py-2 w-full justify-center`}>
                 <div className={`flex flex-row items-center border-solid border-slate-700 border-r-2 pr-3`}>
                     <label htmlFor="startDate" className={`w-1/2 text-red-800`}>From </label>
